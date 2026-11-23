@@ -1,0 +1,216 @@
+:root{color-scheme:dark;--ink:#f4eefc;--soft:#cabfda;--line:#ccb8ef38;--hue:265;--accent:#e0cafa;font-family:system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;min-height:100svh;display:flex;flex-direction:column;color:var(--ink);background:radial-gradient(ellipse at 72% 53%,hsl(var(--hue) 32% 17%),#100d19 65%);transition:background-color 1s;overflow-x:hidden}
+body[data-stage="1"]{--hue:232;--accent:#cdd8ff}body[data-stage="2"],body[data-stage="3"]{--hue:180;--accent:#c8f4e6}
+button,select,textarea{font:inherit}button,select{cursor:pointer}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:24px clamp(20px,6vw,96px);border-bottom:1px solid var(--line);gap:12px}
+.brand{color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;font:1.38rem Georgia,serif;white-space:nowrap}
+.mark{display:grid;place-items:center;width:32px;aspect-ratio:1;border:1px solid var(--line);border-radius:50%;color:var(--accent);font:1rem system-ui}
+.sound{display:flex;align-items:center;gap:10px;color:var(--soft);font-size:.875rem}
+select{border-radius:25px;border:1px solid var(--line);padding:7px 10px;color:var(--ink);background:#21192c}
+main{flex:1;position:relative;isolation:isolate;display:flex;align-items:center;padding:48px clamp(20px,9vw,140px) 55px;min-height:620px}
+.content{width:min(100%,510px);z-index:1}
+nav ol{list-style:none;padding:0;margin:0 0 33px;display:flex;flex-wrap:wrap;gap:12px;color:var(--soft);font-size:.77rem;letter-spacing:.07em;text-transform:uppercase}
+nav li{border-bottom:1px solid var(--line);padding:0 8px 9px}
+nav li[aria-current]{border-color:var(--accent);color:var(--accent)}
+h1{font:400 clamp(3.3rem,6.5vw,6.6rem)/.94 Georgia,serif;letter-spacing:-.065em;margin:0 0 20px}
+p{margin:0 0 24px;color:var(--soft);line-height:1.55}
+.writing{position:relative;background:#171221e6;border:1px solid var(--line);border-radius:14px}
+textarea{display:block;width:100%;height:125px;padding:16px 16px 30px;border:0;border-radius:inherit;color:var(--ink);background:none;resize:vertical}
+textarea::placeholder{color:#a799ba}
+.writing small{position:absolute;bottom:8px;right:12px;color:var(--soft);pointer-events:none}
+fieldset{padding:0;border:0;margin:20px 0 24px;min-width:0}legend{padding:0;margin-bottom:10px;font-size:.9rem}
+.moods{display:flex;flex-wrap:wrap;gap:7px}
+.moods label{position:relative;cursor:pointer}
+.moods input,.sr{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.moods span,.quiet{display:inline-block;padding:8px 11px;border:1px solid var(--line);border-radius:30px;background:#191424;color:var(--soft);font-size:.875rem}
+.moods input:checked+span,.moods label:hover span,.quiet:hover{border-color:var(--accent);color:var(--ink);background:#332942}
+.moods input:focus-visible+span{outline:2px solid var(--accent);outline-offset:3px}
+.primary{border:0;border-radius:30px;background:var(--accent);color:#1e1630;font-weight:650;padding:13px 24px;min-height:48px}
+.primary:hover{filter:brightness(1.12)}
+.visual{position:absolute;z-index:-1;width:min(60vw,810px);aspect-ratio:1;right:0;top:50%;transform:translateY(-50%);pointer-events:none}
+blockquote{white-space:pre-wrap;overflow-wrap:anywhere;max-height:240px;overflow:auto;margin:0 0 24px;padding:18px;border:1px solid var(--line);border-radius:14px;background:#171221d9}
+blockquote.dissolve{opacity:0;transform:translateY(-26px) scale(.97);filter:blur(9px);transition:opacity 2.4s,transform 2.4s,filter 2.4s}
+footer{border-top:1px solid var(--line);padding:20px clamp(20px,6vw,96px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;color:var(--soft)}
+.scale{display:flex;align-items:center;gap:10px;font-size:.875rem}progress{width:105px;height:6px;appearance:none;border:0;border-radius:10px;background:#3c3149;overflow:hidden}progress::-webkit-progress-bar{background:#3c3149}progress::-webkit-progress-value{background:var(--accent);transition:width .6s}progress::-moz-progress-bar{background:var(--accent)}
+@media(max-width:790px){main{min-height:auto;padding-top:clamp(155px,37vw,290px);align-items:start}.visual{width:min(76vw,520px);right:50%;top:0;transform:translate(50%,-15%);opacity:.75}.content{margin:auto}h1{font-size:clamp(3.4rem,10vw,5.3rem)}}
+@media(max-width:400px){.sound label span{display:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}
+/* A diffuse, slowly shifting light anchors the opening and the breathing guide. */
+:root{--ink:#f0eff7;--soft:#c1c7da;--line:#bbc7e22d;--accent:#ded7f2}
+body{position:relative;isolation:isolate;background:#080c17}
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background:radial-gradient(ellipse at 58% 47%,#1d2037 0%,#0d1223 45%,#070a13 82%)}
+body::after{
+  background:radial-gradient(ellipse at 59% 48%,#61778e 0%,#384d66 43%,#22334b 80%);
+  opacity:0;
+  transition:opacity 4.5s ease;
+}
+body[data-stage="1"]::after{opacity:.42;transition-duration:12s}
+body[data-stage="2"]::after{opacity:.79}
+body[data-stage="3"]::after{opacity:1}
+body[data-stage="1"]{--accent:#d6def6}
+body[data-stage="2"],body[data-stage="3"]{--accent:#e3eaf6;--soft:#e0e6f0}
+.top{padding-block:21px}
+.brand{font:450 .82rem system-ui;letter-spacing:.16em;text-transform:uppercase}
+select,.moods span,.quiet{background:#1c253bc7}
+.writing,blockquote{background:#121b2caa;backdrop-filter:blur(16px)}
+.moods input:checked+span,.moods label:hover span,.quiet:hover{background:#303950}
+.primary{color:#171d2e}
+.visual{width:min(57vw,740px);right:2%;display:grid;place-items:center}
+@property --orb-core{syntax:"<color>";inherits:true;initial-value:#565781}
+@property --orb-highlight{syntax:"<color>";inherits:true;initial-value:#a19bc7}
+@property --orb-rim{syntax:"<color>";inherits:true;initial-value:#4a4d75}
+@property --compression{syntax:"<number>";inherits:true;initial-value:0}
+@property --sway{syntax:"<number>";inherits:true;initial-value:0}
+@property --motion-x{syntax:"<length-percentage>";inherits:true;initial-value:3%}
+@property --motion-y{syntax:"<length-percentage>";inherits:true;initial-value:5%}
+@property --tilt{syntax:"<angle>";inherits:true;initial-value:6deg}
+
+@property --emotion-strength{syntax:"<number>";inherits:true;initial-value:1}
+@property --gesture-x{syntax:"<length-percentage>";inherits:true;initial-value:0%}
+@property --gesture-y{syntax:"<length-percentage>";inherits:true;initial-value:0%}
+@property --pulse{syntax:"<number>";inherits:true;initial-value:0}
+
+.sphere{
+  --shape:42% 58% 53% 47% / 58% 40% 60% 42%;
+  --breath-scale:1;
+  --compression:0;
+  --edge-blur:0px;
+  --gesture:none;
+  --orb-transition:.85s;
+  --palette-transition:.22s;
+  --scale-transition:.6s;
+  position:relative;
+  width:58%;
+  aspect-ratio:1;
+  scale:var(--breath-scale);
+  filter:drop-shadow(0 0 42px #a0a6e43d);
+}
+.sphere::before,.sphere::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  transform:
+    translate(
+      calc(var(--sway) * var(--motion-x) + var(--gesture-x) * var(--emotion-strength)),
+      calc(var(--sway) * var(--motion-y) + var(--gesture-y) * var(--emotion-strength))
+    )
+    rotate(calc(var(--sway) * var(--tilt)))
+    scale(
+      calc(1 + (var(--pulse) + var(--compression) * .3) * var(--emotion-strength)),
+      calc(1 + (var(--pulse) - var(--compression)) * var(--emotion-strength))
+    );
+}
+.sphere{
+  animation:sway 17s ease-in-out infinite, var(--gesture);
+  transition:scale var(--scale-transition) ease,--orb-core var(--palette-transition) ease-out,
+    --orb-highlight var(--palette-transition) ease-out,--orb-rim var(--palette-transition) ease-out,
+    --compression var(--orb-transition) ease,
+    --motion-x var(--orb-transition),--motion-y var(--orb-transition),--tilt var(--orb-transition),
+    --emotion-strength var(--orb-transition) ease;
+}
+.sphere::before{
+  inset:-19%;
+  background:radial-gradient(ellipse,color-mix(in srgb,var(--orb-core) calc(62% + var(--pulse) * 170% * var(--emotion-strength)),transparent),transparent 66%);
+  filter:blur(32px);
+}
+.sphere::after{
+  border-radius:var(--shape);
+  background:
+    radial-gradient(ellipse at 27% 23%,var(--orb-highlight),transparent 49%),
+    radial-gradient(ellipse at 68% 73%,color-mix(in srgb,var(--orb-highlight) 35%,transparent),transparent 56%),
+    radial-gradient(ellipse at 42% 38%,var(--orb-core) 24%,var(--orb-rim) 76%,transparent 100%);
+  box-shadow:inset 7px 4px 33px color-mix(in srgb,var(--orb-highlight) 28%,transparent),
+    inset -16px -19px 52px #070d254d;
+  filter:blur(calc(6px + var(--edge-blur) * var(--emotion-strength)));
+  transition:border-radius var(--orb-transition) ease,filter var(--orb-transition) ease;
+}
+@keyframes sway{0%,100%{--sway:-1}50%{--sway:1}}
+
+/* Reflection carries the selected emotion into the start of the next breath. */
+body[data-mood="anxious"] .sphere{
+  --orb-core:#6255ad;--orb-highlight:#a59be6;--orb-rim:#424576;
+  --shape:39% 61% 55% 45% / 57% 40% 60% 43%;
+  --motion-x:2%;--motion-y:1%;--tilt:3deg;--gesture:uneven-pulse 9s ease-in-out infinite;
+}
+body[data-mood="overwhelmed"] .sphere{
+  --orb-core:#3e4e60;--orb-highlight:#758495;--orb-rim:#283645;
+  --shape:44% 56% 61% 39% / 43% 60% 40% 57%;
+  --motion-x:2%;--motion-y:2%;--tilt:4deg;--compression:.23;--edge-blur:12px;
+}
+body[data-mood="sad"] .sphere{
+  --orb-core:#5f7e92;--orb-highlight:#9ab5c5;--orb-rim:#405568;
+  --shape:51% 49% 43% 57% / 59% 57% 43% 41%;
+  --motion-x:1%;--motion-y:0%;--tilt:1deg;--gesture:slow-sink 24s ease-in-out infinite;
+}
+body[data-mood="frustrated"] .sphere{
+  --orb-core:#9a4d75;--orb-highlight:#cd91af;--orb-rim:#612b4d;
+  --shape:59% 41% 52% 48% / 44% 56% 44% 56%;
+  --motion-x:1%;--motion-y:1%;--tilt:-4deg;--gesture:deep-pulse 6s ease-in-out infinite;
+}
+body[data-mood="unsure"] .sphere{
+  --orb-core:#9076b3;--orb-highlight:#d6c0eb;--orb-rim:#685783;
+  --shape:46% 54% 48% 52% / 53% 45% 55% 47%;
+  --motion-x:1%;--motion-y:1%;--tilt:4deg;--gesture:wandering-drift 16s ease-in-out infinite;
+}
+@keyframes uneven-pulse{
+  0%,100%{--pulse:0}
+  17%{--pulse:.05}
+  33%{--pulse:-.035}
+  47%{--pulse:.035}
+  61%{--pulse:-.024}
+  83%{--pulse:-.005}
+}
+@keyframes deep-pulse{
+  0%,100%{--pulse:-.045}
+  48%{--pulse:.085}
+}
+@keyframes slow-sink{
+  0%,100%{--gesture-y:2%}
+  64%{--gesture-y:14%}
+}
+@keyframes wandering-drift{
+  0%,100%{--gesture-x:-5%;--gesture-y:1%}
+  25%{--gesture-x:4%;--gesture-y:-4%}
+  46%{--gesture-x:1%;--gesture-y:2%}
+  69%{--gesture-x:7%;--gesture-y:5%}
+  85%{--gesture-x:-2%;--gesture-y:3%}
+}
+body[data-stage="1"] .sphere,
+body[data-stage="2"] .sphere,
+body[data-stage="3"] .sphere{
+  --shape:50%;
+  --emotion-strength:0;
+  --motion-x:0%;
+  --motion-y:0%;
+  --tilt:0deg;
+  --orb-core:#6d86a7;
+  --orb-highlight:#b1c4e0;
+  --orb-rim:#4c6384;
+  --palette-transition:var(--orb-transition);
+  --orb-transition:12s;
+}
+body[data-stage="1"] .sphere{--scale-transition:0s}
+body[data-stage="2"] .sphere,body[data-stage="3"] .sphere{
+  --orb-core:#839fb4;
+  --orb-highlight:#c9dce8;
+  --orb-rim:#667f98;
+  --orb-transition:4.5s;
+}
+body[data-stage="2"] .sphere::after,body[data-stage="3"] .sphere::after{filter:blur(11px)}
+body[data-stage="intro"] main{display:grid;place-items:center;min-height:min(680px, calc(100svh - 71px));padding:60px 22px}
+body[data-stage="intro"] .visual{right:50%;top:48%;width:min(93vw,850px);transform:translate(50%,-50%);opacity:.82}
+#intro{text-align:center;width:100%}
+#intro h1{font:400 clamp(2.9rem,8vw,7.35rem)/1.04 Georgia,serif;letter-spacing:.17em;margin:0 0 19px;text-indent:.17em;text-shadow:0 3px 25px #0c122b9e}
+#intro p{color:#f0edf9;text-shadow:0 2px 12px #0b112b;margin-bottom:33px}
+#intro .primary{background:#151d337b;color:#f4f0fa;border:1px solid #e2dcf385;padding-inline:31px;backdrop-filter:blur(12px)}
+@media(max-width:790px){.visual{width:min(76vw,520px);right:50%;top:0;transform:translate(50%,-15%);opacity:.75}}
+@media(max-width:400px){.top{padding-inline:16px}.sound{gap:6px;font-size:.78rem}}
+@media(prefers-reduced-motion:reduce){.sphere{scale:1;animation:none}}
+
+#breathe h1{font-size:clamp(3rem,6.5vw,6rem);margin-bottom:32px}
+@media(max-width:790px){#breathe{text-align:center;padding-block:clamp(36px,12vw,80px)}}

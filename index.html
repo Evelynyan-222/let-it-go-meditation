@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A quiet space to write what weighs on you, breathe, and let it go.">
+<title>Let It Go – An Interactive Meditation Experience</title>
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body data-stage="intro">
+<header class="top">
+  <a class="brand" href="./">Let It Go</a>
+  <div class="sound"><label for="sound">Ambient sound</label><select id="sound"><option value="off">Off</option><option value="rain">Soft rain</option><option value="ocean">Ocean</option><option value="drone">Soft tones</option></select></div>
+</header>
+<main>
+  <div class="visual" aria-hidden="true"><div class="sphere"></div></div>
+  <section id="intro" aria-labelledby="intro-title">
+    <h1 id="intro-title">LET IT GO</h1>
+    <p>A quiet space to release what weighs on you.</p>
+    <button id="enter" class="primary">Begin</button>
+  </section>
+  <div class="content" hidden>
+    <nav aria-label="Meditation progress"><ol id="steps"><li aria-current="step">Reflect</li><li>Breathe</li><li>Release</li></ol></nav>
+    <section id="reflect" aria-labelledby="reflect-title">
+      <h1 id="reflect-title" tabindex="-1">What’s weighing<br>on you?</h1>
+      <p>Give the thought a little space. Put it into words.</p>
+      <form id="reflection">
+        <label class="sr" for="thought">What’s weighing on you?</label>
+        <div class="writing"><textarea id="thought" maxlength="1000" required placeholder="Something I’ve been carrying…"></textarea><small id="count">0 / 1000</small></div>
+        <fieldset><legend>How are you feeling?</legend>
+          <div class="moods">
+            <label><input type="radio" name="mood" value="anxious" required><span>Anxious</span></label>
+            <label><input type="radio" name="mood" value="overwhelmed"><span>Overwhelmed</span></label>
+            <label><input type="radio" name="mood" value="sad"><span>Sad</span></label>
+            <label><input type="radio" name="mood" value="frustrated"><span>Frustrated</span></label>
+            <label><input type="radio" name="mood" value="unsure"><span>Unsure</span></label>
+          </div>
+        </fieldset>
+        <button class="primary">Begin breathing</button>
+      </form>
+    </section>
+    <section id="breathe" hidden aria-label="Guided breathing">
+      <h1 id="breath-title" tabindex="-1" aria-live="polite">Breathe In</h1>
+      <button id="advance" class="primary">Let It Go</button>
+    </section>
+    <section id="release" hidden aria-labelledby="release-title">
+      <h1 id="release-title" tabindex="-1">Let it go.</h1>
+      <p id="release-note">Let the words drift away.</p>
+      <blockquote id="written"></blockquote>
+      <button id="again" class="primary" hidden>Begin again</button>
+    </section>
+  </div>
+</main>
+<footer hidden><div class="scale"><span>Tension</span><progress id="progress" max="100" value="8" aria-label="Meditation progress"></progress><span>Calm</span></div><small>Your words stay in this tab. They disappear when you release them.</small></footer>
+</body>
+</html>
